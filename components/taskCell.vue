@@ -1,6 +1,7 @@
 <template>
     <div class="task-cell">
-        <div class="title"><span class="title-mark" :class="{'mark': done}"></span>{{ cellInfo.title }}<span class="number">项目编号：{{ cellInfo.id }}</span></div>
+        <div class="title">
+            <span class="title-mark" :class="{'mark': done}"></span>{{ cellInfo.title }}<span class="number">项目编号：{{ cellInfo.id }}</span></div>
         <div class="owner">
             <li v-for="(item, index) in cellInfo.owner" :key="index">{{item.name}} {{item.number}}</li>
             <li class="priority">优先级：{{ cellInfo.priority }}</li>
@@ -22,6 +23,7 @@
     }
     .title {
         display: flex;
+        align-items: center;
         height: 24px;
         line-height: 24px;
         vertical-align: middle;
