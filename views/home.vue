@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="home-header">
-            <div class="home-title">我的任务<span></span></div>
+            <div class="home-title">我的任务</div>
             <ul class="home-nav" @click="handleNavClick">
                 <li class="home-nav-tab" :class="{'active': actived}" id="1">我参与的任务</li>
                 <li class="home-nav-tab" :class="{'active': !actived}" id="2">我发起的任务</li>
@@ -18,8 +18,8 @@
         },
         data() {
             return {
-                tasks: this.$store.state.taskData,
-                propTasks: this.$store.state.taskData,
+                tasks: this.$store.state.projectData,
+                propTasks: this.$store.state.projectData,
                 actived: true,
                 exTarget: null
             }
@@ -70,12 +70,6 @@
         line-height: 36px;
         text-align: center;
         background: #eeeeee;
-    }
-    .home-title span {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        background: aqua;
     }
     .home-nav {
         width: 90%;

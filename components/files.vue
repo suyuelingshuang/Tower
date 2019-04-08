@@ -14,7 +14,7 @@
                 :on-exceed="handleExceed"
                 :file-list="fileList">
                 <div class="upload-button">
-                    <el-button size="small" type="primary">上传文档</el-button>
+                    <el-button size="small" type="primary">上传文件</el-button>
                     <div slot="tip" class="el-upload__tip">只能上传zip文件，且不超过500MB</div>
                 </div>
             </el-upload>

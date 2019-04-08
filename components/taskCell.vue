@@ -1,11 +1,13 @@
 <template>
     <div class="task-cell">
-        <div class="title">
-            <span class="title-mark" :class="{'mark': done}"></span>{{ cellInfo.title }}<span class="number">项目编号：{{ cellInfo.id }}</span></div>
-        <div class="owner">
-            <li v-for="(item, index) in cellInfo.owner" :key="index">{{item.name}} {{item.number}}</li>
-            <li class="priority">优先级：{{ cellInfo.priority }}</li>
-        </div>
+        <router-link :to="'/editProject/' + cellInfo.id" class="project-main">
+            <div class="title">
+                <span class="title-mark" :class="{'mark': done}"></span>{{ cellInfo.title }}<span class="pId">项目编号：{{ cellInfo.id }}</span></div>
+            <div class="owner">
+                <span>{{cellInfo.owner}}</span>
+                <span class="priority">优先级：{{ cellInfo.priority }}</span>
+            </div>
+        </router-link>
     </div>
 </template>
 <script>
@@ -45,7 +47,7 @@
     .owner {
         
     }
-    .owner li {
+    .owner span {
         font-size: 12px;
         display: inline-block;
         padding: 2px 8px;

@@ -13,11 +13,10 @@
             <el-form-item label="项目编号" prop="prid">
                 <el-input v-model="form.prid"></el-input>
             </el-form-item>
-            <el-form-item label="员工姓名" prop="pName">
-                <el-input v-model="form.pName"></el-input>
-            </el-form-item>
-            <el-form-item label="员工编号" prop="pId">
-                <el-input v-model="form.pId"></el-input>
+            <el-form-item label="员工姓名">
+                <el-select v-model="form.pName" placeholder="请选择负责人">
+                    <el-option v-for="item in members" :key="item.pId" :label="item.pName" :value="item.pName"></el-option>
+                </el-select>
             </el-form-item>
             <el-form-item label="优先级">
                 <el-input v-model="form.priority"></el-input>
@@ -46,8 +45,7 @@
                     region: '',
                     title: '',
                     id: '',
-                    pName: '',
-                    pId: '',
+                    pName: '钟稳霞',
                     primary: '',
                     owner: '',
                     success: '',
@@ -72,11 +70,9 @@
                     ],
                     pName: [
                         { required: true, message: '员工姓名不能为空'}
-                    ],
-                    pId: [
-                        { required: true, message: '员工编号不能为空'}
                     ]
-                }
+                },
+                members: this.$store.state.members
             }
         },
         methods: {
@@ -108,16 +104,15 @@
                         obj = {
                             title: this.form.title,
                             id: this.form.prid,
-                            owner: [{
-                                name: this.form.pName,
-                                number: this.form.pId
-                            }],
+                            owner: this.form.pName,
                             priority: this.form.priority || 1,
                             own: false,
                             done: false,
                             star: false
                         }
                         this.$store.commit("addProjectData", obj);
+                        this.$message.success("新建文件成功！！！");
+                        this.$refs[formName].resetFields();
                         console.log(this.$store.state.projectData);
                     } else {
                         console.log('error submit!!');
@@ -126,7 +121,7 @@
                 });
             },
             resetForm(formName) {
-                this.$refs[formName].resetFields();
+                this.$router.go(-1);
             }
         }
     }
@@ -142,7 +137,7 @@
         text-align: center;
     }
     .add-project-list {
-        margin: 10px 10px 10px 0;
+        margin: 10px;
         overflow: scroll;
     }
 </style>

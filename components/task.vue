@@ -2,10 +2,12 @@
     <div>
         <ul class="task-list">
             <li v-for="(item, index) in taskData" :key="index" class="list-item">
-                <h1>{{ item.name }}</h1><span>优先级：{{ item.priority }}</span>
+                <h1>{{ item.title }}</h1><span>参与者：{{ getMembers(item.pName) }}</span>
             </li>
         </ul>
-        <el-button size="small" type="primary" class="task-add">新增任务</el-button>
+        <router-link :to="'/addTask/' + pageId" class="project-main">
+            <el-button size="small" type="primary" class="task-add">新增任务</el-button>
+        </router-link>
     </div>
 </template>
 <script>
@@ -15,7 +17,22 @@
         },
         data() {
             return {
-
+                pageId: 0
+            }
+        },
+        mounted() {
+            this.pageId = this.$route.params.id;
+        },
+        methods: {
+            getMembers(name) {
+                var res = "";
+                for(var i in name) {
+                    res += name[i];
+                    if(i<name.length-1) {
+                        res += ";";
+                    }
+                }
+                return res;
             }
         }
     }

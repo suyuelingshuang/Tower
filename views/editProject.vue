@@ -9,7 +9,7 @@
             <li class="list-item" :class="{'actived': activeIndex==4}" id="4">设置</li>
         </ul>
         <task v-show="activeIndex == 0" :taskData="taskData.tasks || []"></task>
-        <discuss v-show="activeIndex == 1"></discuss>
+        <discuss v-show="activeIndex == 1" :discussData="taskData.discuss || []"></discuss>
         <docment v-show="activeIndex == 2"></docment>
         <files v-show="activeIndex == 3"></files>
         <set-file v-show="activeIndex == 4"></set-file>

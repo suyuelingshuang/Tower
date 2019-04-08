@@ -56,6 +56,30 @@ const routers = [
         component: (resolve) => require(['./views/addProject.vue'], resolve)
     },
     {
+        path: '/addTask/:id',
+        name: 'addTask',
+        meta: {
+            title: '新增任务'
+        },
+        component: (resolve) => require(['./views/addTask.vue'], resolve)
+    },
+    {
+        path: '/addDiscuss/:id',
+        name: 'addDiscuss',
+        meta: {
+            title: '新增讨论'
+        },
+        component: (resolve) => require(['./views/addDiscuss.vue'], resolve)
+    },
+    {
+        path: '/addMember/',
+        name: 'addMember',
+        meta: {
+            title: '添加成员'
+        },
+        component: (resolve) => require(['./views/addMember.vue'], resolve)
+    },
+    {
         path: '*',
         redirect: '/home'
     }
